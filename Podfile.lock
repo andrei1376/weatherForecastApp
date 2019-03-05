@@ -1,0 +1,39 @@
+PODS:
+  - Nimble (8.0.0)
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CoreLocation (6.8.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.3):
+    - PromiseKit/CorePromise
+  - Quick (2.0.0)
+  - ReachabilitySwift (4.3.0)
+
+DEPENDENCIES:
+  - Nimble
+  - PromiseKit (~> 6.8)
+  - PromiseKit/CoreLocation
+  - Quick
+  - ReachabilitySwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Nimble
+    - PromiseKit
+    - Quick
+    - ReachabilitySwift
+
+SPEC CHECKSUMS:
+  Nimble: a0e6f95b4b91a4f66b6da3512b6bebc07c9cbf49
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+
+PODFILE CHECKSUM: 9e4b528bb80a34c1210b3bd1bce15686c78805be
+
+COCOAPODS: 1.6.1
