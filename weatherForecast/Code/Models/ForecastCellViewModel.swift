@@ -14,7 +14,6 @@ struct ForecastCellViewModel {
     let hour: TimeInterval
     let conditionDetail: String
     let temperature: Double
-    let day: TimeInterval
 }
 
 struct ForecastSection {

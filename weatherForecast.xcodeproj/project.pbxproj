@@ -831,7 +831,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6EFFA28A6DDE7B5C7BF1325B /* Pods-weatherForecastTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherForecastTests/Info.plist;
@@ -852,7 +852,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA66413A7A23775F5ABB60DE /* Pods-weatherForecastTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherForecastTests/Info.plist;
@@ -873,7 +873,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EBF42E77640062CE18BA8243 /* Pods-weatherForecastUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherForecastUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -893,7 +893,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BF27F96E5014759B1C1EB5BE /* Pods-weatherForecastUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherForecastUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

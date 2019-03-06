@@ -46,7 +46,7 @@ class ForecastViewController: UIViewController {
 
     private func setupSections(withForecast data:[WeatherResponse]) {
         let groupedItems = Dictionary(grouping: data.map {
-            ForecastCellViewModel(image: ($0.weather.first)!, condition: ($0.weather.first?.main)!, hour: $0.dt, conditionDetail: ($0.weather.first?.description)!, temperature: $0.main.temp, day: $0.dt)
+            ForecastCellViewModel(image: ($0.weather.first)!, condition: ($0.weather.first?.main)!, hour: $0.dt, conditionDetail: ($0.weather.first?.description)!, temperature: $0.main.temp)
             }, by: { (item) -> Int in
                 let date = Date(timeIntervalSince1970: item.hour)
                 return Calendar.current.component(.day, from: date)
