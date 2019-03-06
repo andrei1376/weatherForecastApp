@@ -16,19 +16,17 @@ class ForecastViewController: UIViewController {
     @IBOutlet weak var barTitle: UINavigationItem!
     @IBOutlet var stateView: StateView!
 
+    // MARK: - Internal Properties
 
-    
     var forecast = [ForecastCellViewModel]()
     var forecastSections = [ForecastSection]()
     var city: String = "Location"
 
-    // MARK: - Internal Properties
-
     let dataController = DataController()
     let locationHelper = LocationHelper()
     var forecastData: ForecastResponse?
+    
     // MARK: - View Life Cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -37,13 +35,9 @@ class ForecastViewController: UIViewController {
             return
         }
         setupSections(withForecast: data.list)
-
-
     }
 
     // MARK: - Actions
-
-
     private func setupSections(withForecast data:[WeatherResponse]) {
         let groupedItems = Dictionary(grouping: data.map {
             ForecastCellViewModel(image: ($0.weather.first)!, condition: ($0.weather.first?.main)!, hour: $0.dt, conditionDetail: ($0.weather.first?.description)!, temperature: $0.main.temp)

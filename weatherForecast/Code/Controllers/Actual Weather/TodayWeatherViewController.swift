@@ -34,7 +34,7 @@ class TodayWeatherViewController: UIViewController {
     @IBOutlet weak var windDirectionStack: UIStackView!
     @IBOutlet weak var windDirectionLabel: UILabel!
 
-    @IBOutlet var loadingView: StateView!
+    @IBOutlet var stateView: StateView!
 
     // MARK: - Internal Properties
 
@@ -47,7 +47,7 @@ class TodayWeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loadingView.show(for: .loading, toView: self.view)
+        stateView.show(for: .loading, toView: self.view)
         getCurrentLocation()
     }
 
@@ -72,12 +72,12 @@ class TodayWeatherViewController: UIViewController {
                 guard self != nil else { return }
                 self?.present(error: error, retryAction: { (_) in
                     self?.getCurrentLocation()
-                    self?.loadingView.show(for: .loading, toView: self!.view)
+                    self?.stateView.show(for: .loading, toView: self!.view)
                 }, cancelAction: { (_) in
                     if ReachabilityManager.shared.isNetworkAvailable {
-                        self?.loadingView.show(for: .empty, toView: self!.view)
+                        self?.stateView.show(for: .empty, toView: self!.view)
                     }else{
-                        self?.loadingView.show(for: .noInternet, toView: self!.view)
+                        self?.stateView.show(for: .noInternet, toView: self!.view)
                     }
 
                 })
@@ -94,19 +94,20 @@ class TodayWeatherViewController: UIViewController {
 
                 return (self?.dataController.getForecast(at: coordinate.latitude, longitude: coordinate.longitude))!
             }.done { [weak self] forecastInfo in
-                self?.handleForecast(data: forecastInfo)
-                self?.loadingView.hide()
+                self?.handleForecast(data: forecastInfo, city: placemark.locality!)
+                self?.stateView.hide()
             }.catch { [weak self] error in
                 self?.present(error: error)
-                self?.loadingView?.hide()
+                self?.stateView?.hide()
             }
     }
 
-    func handleForecast(data: ForecastResponse){
+    func handleForecast(data: ForecastResponse, city: String){
         guard let viewcontrollers = tabBarController?.viewControllers else {return}
         for viewController in viewcontrollers {
             if let vc = viewController as? ForecastViewController {
                 vc.forecastData = data
+                vc.city = city
             }
         }
     }
@@ -164,7 +165,7 @@ extension TodayWeatherViewController: NetworkStatusListener {
     func networkStatusDidChange(status: Reachability.Connection) {
         switch status {
         case .none:
-            loadingView.show(for: .noInternet, toView: self.view)
+            stateView.show(for: .noInternet, toView: self.view)
         default:
             getCurrentLocation()
         }
