@@ -34,4 +34,3 @@ Unit tests cover a few parts of the code that deal with things like tricky logic
 
   - API: <http://openweathermap.org/api>
   - Documentation: Current <https://openweathermap.org/current> - Forecast <https://openweathermap.org/forecast5>
-# weatherForecastApp
