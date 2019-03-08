@@ -20,7 +20,7 @@ class ForecastViewController: UIViewController {
 
     var forecast = [ForecastCellViewModel]()
     var forecastSections = [ForecastSection]()
-    var city: String = "Location"
+    var city: String = ""
 
     let dataController = DataController()
     let locationHelper = LocationHelper()
@@ -37,6 +37,13 @@ class ForecastViewController: UIViewController {
         setupSections(withForecast: data.list)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        animateTable()
+    }
+
     // MARK: - Actions
     private func setupSections(withForecast data:[WeatherResponse]) {
         let groupedItems = Dictionary(grouping: data.map {
@@ -50,6 +57,27 @@ class ForecastViewController: UIViewController {
         }).enumerated().map( {
             return ForecastSection(section: $0.offset, forecastData: $0.element.value)
         })
+    }
+
+    func animateTable(){
+        let cells = tableView.visibleCells
+        let tableWidth: CGFloat = tableView.bounds.size.width
+
+        for cell in cells {
+            let cell: WeatherCell = cell as! WeatherCell
+            cell.transform = CGAffineTransform(translationX: tableWidth, y: 0)
+        }
+
+        var index = 0
+
+        for cell in cells {
+            let cell: WeatherCell = cell as! WeatherCell
+            UIView.animate(withDuration: 0.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            })
+            index += 1
+        }
+
     }
 
 }
